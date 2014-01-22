@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+        <title>SVG Illustrator Test</title> 
+        
+        
+    </head>
+    <body>
+
+    <object data="wheel1.svg" type="image/svg+xml" id="alphasvg" width="300px" height="500px" >
+    </object>
+    
+<script>
+        console.log("hey ff");
+        var a = document.getElementById("alphasvg");
+
+        //it's important to add an load event listener to the object, as it will load the svg doc asynchronously
+        a.addEventListener("load",function(){
+            var svgDoc = a.contentDocument; 
+            console.log("svgDoc along= "+svgDoc);
+            var delta = svgDoc.getElementById("wheel"); 
+            delta.addEventListener("mouseenter",function(){
+                delta.style.fill="blue";
+                console.log("entered");
+
+                svgDoc.getElementById("wheel2").style.fill="blue";
+            },false);    //add behaviour
+            delta.addEventListener("mouseout",function(){
+                delta.style.fill="#D1D3D4";
+                svgDoc.getElementById("wheel2").style.fill="#D1D3D4";
+               
+                
+            },false); 
+        },false);
+
+    </script>
+    </body>
+</html>
