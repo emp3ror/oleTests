@@ -23,6 +23,23 @@
             delta.addEventListener("mouseenter",function(){
                 delta.style.fill="blue";
                 console.log("entered");
+// <animateMotion dur="6s" repeatCount="indefinite" rotate="auto" >
+//        <mpath xlink:href="#path1"/>
+//     </animateMotion>
+                newpath = document.createElementNS(delta.namespaceURI,"animateMotion");  
+newpath.setAttributeNS(null, "id", "animeWheel");  
+newpath.setAttributeNS(null, "dur","6s");  
+newpath.setAttributeNS(null, "repeatCount", "indefinite"); 
+newpath.setAttributeNS(null, "rotate","auto"); 
+
+
+newMpath = document.createElementNS(newpath.namespaceURI,"mpath"); 
+newMpath.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", "#wheel");
+// newpath.setAttributeNS(null, "opacity", 1);  
+// newpath.setAttributeNS(null, "fill", "none");
+newpath.appendChild(newMpath);
+
+delta.appendChild(newpath);
 
                 svgDoc.getElementById("wheel2").style.fill="blue";
             },false);    //add behaviour
