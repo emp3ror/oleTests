@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+        <title>SVG Illustrator Test</title> 
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        
+    </head>
+    <body>
+
+    <object data="lion.svg" type="image/svg+xml" id="alphasvg" width="300px" height="500px" >
+    </object>
+    
+<script>
+        console.log("hey ff");
+        var a = document.getElementById("alphasvg");
+
+        //it's important to add an load event listener to the object, as it will load the svg doc asynchronously
+        a.addEventListener("load",function(){
+            var svgDoc = a.contentDocument; //get the inner DOM of alpha.svg
+            // $(svgDoc).find("nosetips").on("click",function () {
+            //     console.log("entered");
+            // });
+            console.log("svgDoc along= "+svgDoc);
+            // console.log("body = "+ body);
+            //console.log("svgDoc while with jq = "+$(svgDoc).find("nosetips"));
+            var delta = svgDoc.getElementById("nosetips"); //get the inner element by id
+            var abc1;
+            delta.addEventListener("mouseenter",function(){
+                delta.style.fill="blue";
+                console.log("entered");
+                abc1 = svgDoc.getElementById("nosetip").style.fill;
+                svgDoc.getElementById("nosetip").style.fill="#fff";
+            },false);    //add behaviour
+            delta.addEventListener("mouseout",function(){
+                delta.style.fill="red";
+                console.log("entered");
+                svgDoc.getElementById("nosetip").style.fill=abc1;
+                
+            },false); 
+        },false);
+
+    </script>
+    </body>
+</html>
